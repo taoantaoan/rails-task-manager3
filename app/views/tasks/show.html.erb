@@ -1,4 +1,29 @@
-<h2><%= @task.title %></h2>
+<div class="container">
+  <div class="task-card">
+    <div class="task-card-head">
+      <h2><%= @task.title %></h2>
+      <%= link_to "edit", edit_task_path, :class=>"btn btn-warning"%>
+    </div>
+    <div class = "gray-background">
+      <p><strong>details:</strong> <%= @task.details %> </p>
+    </div>
+    <p>
+      <% if @task.completed? then %>
+          <i class="far fa-check-square"></i>
+          This task is yet completed!
+        <% else %>
+          <i class="far fa-square"></i>
+          This task is not yet completed.
+        <% end %>
+       </p>
+    <br>
+    <a href="../tasks">
+      <p>
+        <i class="fa fa-plus"></i>
+        "Back home"
+      </p>
+    </a>,
+  <!-- <i class="fa fa-plus"></i> -->
+  </div>
+</div>
 
-<p><strong>status:</strong> <%= @task.completed %> </p>
-<p><strong>details:</strong> <%= @task.details %> </p>
