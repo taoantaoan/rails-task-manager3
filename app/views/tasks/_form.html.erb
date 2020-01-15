@@ -1,4 +1,4 @@
-<%= form_for(task) do |f| %>
+<%= form_for(@task) do |f| %>
    <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control' %>
@@ -7,11 +7,16 @@
     <%= f.label :details %>
     <%= f.text_field :details, class: 'form-control' %>
   </div>
-  <div class="form-group">
-    <%= f.check_box :completed %>
-    <%= f.label "Completed" %>
+  <% unless f.object.new_record? %>
+  <div class="checkbox">
+    <label>
+      <%= f.check_box :completed %> Completed
+    </label>
   </div>
-  <div class="form-group">
-    <%= f.submit class: 'btn btn-primary' %>
-  </div>
+  <% end %>
+  <%= f.submit class: 'btn btn-primary' %>
+  <hr>
+  <%= link_to tasks_path do %>
+    <i class="fa fa-history"></i> Back to list
+  <% end %>
 <% end %>

@@ -8,10 +8,12 @@
         <% else %>
           <i class="far fa-square"></i>
         <% end %>
-        <%= link_to task.title, task_path(task) %>
-        <%= link_to content_tag(:i, nil, :class => 'fa fa-trash'), task_path(task),
+        <%= link_to task.title, task_path(task.id) %>
+        <%= link_to task_path(task),
         method: :delete,
-        data: { confirm: "Are you sure?" } %>
+        data: { confirm: "Are you sure you want to delete \"#{task.title}\"?" } do %>
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        <% end %>
       </li>
     <% end %>
   </ul>
